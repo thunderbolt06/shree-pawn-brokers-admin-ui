@@ -23,7 +23,7 @@ function App() {
       }));
       
       let res = await sendRequest(
-        `http://localhost:5000/api/pawns/add`,
+        `https://careful-sudsy-tank.glitch.me/api/pawns/add`,
         "POST",
         JSON.stringify({
           id: id,
