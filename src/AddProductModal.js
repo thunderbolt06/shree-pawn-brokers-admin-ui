@@ -6,13 +6,14 @@ import Modal from "@mui/material/Modal";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { TextField, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Divider, TextField, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { useState } from "react";
 import { useHttpClient } from "./http-hook";
 
 import ErrorModal from './UIElements/ErrorModal';
 import LoadingSpinner from './UIElements/LoadingSpinner';
-
+import "./App.css";
+import { addLogs } from "./addLogs";
 
 const style = {
 	position: "absolute",
@@ -20,6 +21,7 @@ const style = {
 	left: "50%",
 	transform: "translate(-50%, -50%)",
 	width: 400,
+    color: "red",
 	bgcolor: "background.paper",
 	border: "2px solid #000",
 	boxShadow: 24,
@@ -75,6 +77,9 @@ export default function BasicModal(props) {
 		} catch (err) {
 			console.log(err);
 		}
+        
+        await addLogs(props.product, value, sendRequest,"op", props.quantity, false );
+
 
 		props.fetchStocks();
 		handleClose();
@@ -108,11 +113,16 @@ export default function BasicModal(props) {
 								exclusive
 								onChange={handleop}
 								aria-label="Value change"
+                                color="primary"
 							>
-								<ToggleButton value="add" aria-label="add">
+
+								<ToggleButton value="add" aria-label="add" >
+                                    Add
 									<AddIcon />
 								</ToggleButton>
-								<ToggleButton value="sub" aria-label="sub">
+                                <Divider orientation="vertical" flexItem />
+								<ToggleButton value="sub">
+                                    Sub
 									<RemoveIcon />
 								</ToggleButton>
 							</ToggleButtonGroup>
@@ -124,7 +134,6 @@ export default function BasicModal(props) {
 								value={value}
 								onChange={handleValueChange}
 							/>
-							{/* <div>----------</div> */}
 							<Button variant="outlined" onClick={handleSubmit}>
 								Submit
 							</Button>

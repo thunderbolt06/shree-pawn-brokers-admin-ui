@@ -13,6 +13,7 @@ import LandingPage from "./LandingPage";
 // import ControlPage from "./ControlPage";
 // import DashboardPage from "./DashboardPage";
 import StockPage from "./StockPage";
+import ChangelogPage from "./ChangelogPage";
 function App() {
 
   return (
@@ -26,6 +27,7 @@ function App() {
         {/* <Route path="/dash" element={<DashboardPage />} /> */}
         {/* <Route path="/control" element={<ControlPage />} /> */}
         <Route path="/stock" element={<StockPage />} />
+        <Route path="/changelog" element={<ChangelogPage />} />
 
       </Routes>
     </Router>

@@ -18,6 +18,9 @@
   justify-content: center;
   margin: 3rem;
 }
+.MuiToggleButton-root {
+    color: #5a0303;
+  }
 .toggle {
   display: flex;
   justify-content: center;

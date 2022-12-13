@@ -23,6 +23,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useHttpClient } from "./http-hook";
 import { useState, useEffect } from "react";
 import BasicModal from "./AddProductModal";
+import { addLogs } from "./addLogs";
 
 const style = {
 	position: "absolute",
@@ -104,6 +105,8 @@ export default function BasicTable(props) {
 		} catch (err) {
 			console.log(err);
 		}
+        
+        await addLogs(productName, "-", sendRequest,"delete", "-", false );
 
 		// for(var i = 0; i < props.rows.length; i++ ) {
 		//   if(props.rows[i] == productName) {
