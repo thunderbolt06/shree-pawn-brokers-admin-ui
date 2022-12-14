@@ -78,7 +78,7 @@ export default function BasicModal(props) {
 			console.log(err);
 		}
         
-        await addLogs(props.product, value, sendRequest,"op", props.quantity, false );
+        await addLogs(props.product, value, sendRequest,op, props.quantity, false );
 
 
 		props.fetchStocks();
