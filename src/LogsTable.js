@@ -1,19 +1,34 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import React from 'react';
+import {
+	Button,
+	Paper,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-function LogsTable(logs, handleToggleCross) {
-	const crosscheckedIcon = crosschecked => {
+function LogsTable(proplogs, handleToggleCross) {
+	let logs = proplogs;
+	let handleCrosscheckedIcon;
+    
+    handleCrosscheckedIcon = crosschecked => {
 		return crosschecked ? (
 			<CheckCircleIcon style={{ color: "green" }} />
 		) : (
 			<CheckCircleOutlineIcon />
 		);
 	};
-    
+
+
+
+	let cross = true;
 	return (
-		<TableContainer component={Paper} sx={{ maxWidth: 800 }}>
+		<TableContainer component={Paper} sx={{ maxWidth: "100vw",width:"auto" }}>
 			<Table aria-label="simple table">
 				<TableHead>
 					<TableRow>
@@ -27,6 +42,7 @@ function LogsTable(logs, handleToggleCross) {
 				</TableHead>
 				<TableBody>
 					{logs.map(log => (
+						// cross = log.crosschecked;
 						<TableRow key={log.time}>
 							<TableCell>{log.product}</TableCell>
 							<TableCell>{log.time}</TableCell>
@@ -37,9 +53,11 @@ function LogsTable(logs, handleToggleCross) {
 								<Button
 									onClick={e => {
 										handleToggleCross(log);
+										// cross = !cross;
+                                        log.crosschecked = !log.crosschecked;
 									}}
 								>
-									{crosscheckedIcon(log.crosschecked)}
+									{handleCrosscheckedIcon(log.crosschecked)}
 								</Button>
 							</TableCell>
 

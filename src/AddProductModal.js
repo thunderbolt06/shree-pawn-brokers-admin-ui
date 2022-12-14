@@ -46,8 +46,8 @@ export default function BasicModal(props) {
 		setValue(e.target.value);
 	};
 	const handleSubmit = async e => {
-		console.log(op);
-		console.log(value);
+		// console.log(op);
+		// console.log(value);
 
 		try {
 			let newquantity = parseInt(props.quantity);
@@ -56,11 +56,11 @@ export default function BasicModal(props) {
 			} else if (op == "sub") {
 				newquantity = parseInt(props.quantity) - parseInt(value);
 			}
-			console.log("hitting url");
-			console.log(process.env.REACT_APP_BACKEND_URL + "/api/stocks/add");
-			console.log(`with body ${props.product} and ${newquantity}`);
-			console.log(props.product);
-			console.log(newquantity);
+			// console.log("hitting url");
+			// console.log(process.env.REACT_APP_BACKEND_URL + "/api/stocks/add");
+			// console.log(`with body ${props.product} and ${newquantity}`);
+			// console.log(props.product);
+			// console.log(newquantity);
 			let res = await sendRequest(
 				process.env.REACT_APP_BACKEND_URL + "/api/stocks/add",
 				"POST",
@@ -73,7 +73,7 @@ export default function BasicModal(props) {
 				}
 			);
 
-			console.log(res);
+			// console.log(res);
 		} catch (err) {
 			console.log(err);
 		}

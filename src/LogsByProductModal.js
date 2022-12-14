@@ -1,4 +1,4 @@
-import { Button, Modal } from "@mui/material";
+import { Button, createTheme, Modal, ThemeProvider } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import ChangelogContent from "./ChangelogContent";
@@ -15,14 +15,29 @@ const style = {
 	boxShadow: 24,
 	p: 4
 };
+const theme = createTheme({      
+    typography: {
+      button: {
+        textTransform: 'none'
+      }
+    }
+  });
+const style2 = {
+  "fontSize": "0.8rem"
+}
 function LogsByProductModal(props) {
+    
 	const { product } = props;
-	console.log(product);
+	// console.log(product);
     const [open, setOpen] = useState(false);
     
 	return (
-		<React.Fragment>
-			<Button onClick={() => {setOpen(true)}}>{product}</Button>
+		<React.Fragment><ThemeProvider theme={theme}>
+
+			<Button onClick={() => {setOpen(true)}} variant="outlined" style={style2}>
+                {product}
+                </Button>
+        </ThemeProvider>
 			<Modal
 				open={open}
 				onClose={() => {setOpen(false)}}

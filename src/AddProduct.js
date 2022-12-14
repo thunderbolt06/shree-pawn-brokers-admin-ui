@@ -24,7 +24,7 @@ function AddProduct(props) {
 	const [quantityValue, setQuantityValue] = useState();
 
 	const handleSubmit = async e => {
-		console.log(productValue);
+		// console.log(productValue);
 
 		setOpenCreateModal(false);
 	};

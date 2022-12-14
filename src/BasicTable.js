@@ -91,13 +91,24 @@ export default function BasicTable(props) {
 		setOpen(true);
 	};
     useEffect(() => {
-        console.log("filterring rows");
+        // console.log("filterring rows");
         let tempRows = [];
         rows.forEach((row) => {
             if(issubsequence(filterValue, row.product)){
                 tempRows.push(row);
             }
         })
+        tempRows.sort((a, b) => {
+            // console.log(`sorting ${a.product} and ${b.product}`);
+            if(a.product < b. product){
+                return -1;
+            }
+            if(a.product > b.product){
+                return 1;
+            }
+            return 0;
+            // return a.product - b.product;
+        });
         setFilteredRows(tempRows);
     }, [rows, filterValue]);
 
@@ -161,7 +172,7 @@ export default function BasicTable(props) {
 				</div>
 			)}
 			{!isLoading && (
-				<TableContainer component={Paper} sx={{ maxWidth: 400 }}>
+				<TableContainer component={Paper} sx={{ maxWidth: "100vw", width:"auto" }}>
                     {/* <Typography className="AppLeft">
 
                     Filter
@@ -172,7 +183,7 @@ export default function BasicTable(props) {
 						variant="outlined"
 						value={filterValue}
 						onChange={e => {
-                            console.log(e.target.value);
+                            // console.log(e.target.value);
                             setFilterValue(e.target.value);}
                         }
                         size="small"

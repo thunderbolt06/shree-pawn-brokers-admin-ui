@@ -28,7 +28,7 @@ export default function ControlPage() {
           }
         );
         
-        console.log(res);
+        // console.log(res);
         setId("");
         setPrincipal("");
         setInsertDate("");

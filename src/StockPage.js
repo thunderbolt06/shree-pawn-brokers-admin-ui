@@ -47,13 +47,13 @@ export default function StockPage() {
 				stocks.push(createData1(stock.product, stock.quantity));
 			});
 			setLoadedStocks(stocks);
-			console.log(stocks);
+			// console.log(stocks);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 	const handleSubmit = async (e) => {
-		console.log(productValue);
+		// console.log(productValue);
 		try {
 			const res = await sendRequest(
 				`${process.env.REACT_APP_BACKEND_URL}/api/stocks/add`,

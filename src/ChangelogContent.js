@@ -45,7 +45,7 @@ function ChangelogContent(props) {
 	const endPoint = props.product
 		? `/getLogsByProduct/${props.product}`
 		: "/getall";
-	console.log(`change log props ${props.product}`);
+	// console.log(`change log props ${props.product}`);
 
 	const updateLogs = async () => {
 		try {
@@ -77,8 +77,18 @@ function ChangelogContent(props) {
 					)
 				);
 			});
+            templogs.sort((a, b) => {
+                if(a.product > b. product){
+                    return -1;
+                }
+                if(a.product < b.product){
+                    return 1;
+                }
+                return 0;
+            });
+            templogs.reverse();
 			setLogs(templogs);
-			console.log(templogs);
+			// console.log(templogs);
 		} catch (error) {
 			console.log(error);
 		}
@@ -89,8 +99,12 @@ function ChangelogContent(props) {
 	useEffect(() => {
 		updateLogs();
 	}, []);
+    // useEffect(() => {
+    //     logs.sort();
+        
+    // }, [logs]);
 
-	const handleToggleCross = log => {
+	const handleToggleCross = async log => {
 		toggleCross(log.time, sendRequest);
 		updateLogs();
 	};
@@ -107,7 +121,13 @@ function ChangelogContent(props) {
 				)}
 				{!isLoading && logs && (
 					<div className="App">
-						<Paper sx={style}>{LogsTable(logs, handleToggleCross)}</Paper>
+						<Paper sx={style}>
+                            <div className="center">
+
+                            <Button variant="outlined" onClick={handleRefresh}>Refresh</Button>
+                            </div>
+                            {LogsTable(logs, handleToggleCross)}
+                            </Paper>
 					</div>
 				)}
 			</div>

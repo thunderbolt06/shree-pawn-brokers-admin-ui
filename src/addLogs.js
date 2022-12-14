@@ -1,13 +1,13 @@
 
 async function addLogs(productValue, quantityValue, sendRequest,op, old, cross ) {
     try {
-        console.log("added logs");
+        // console.log("added logs");
         const event = new Date(Date.now());
         var time = event.toLocaleString('en-GB', { timeZone: 'IST' });
 
-        console.log(time.substring(0, time.length - 1));
-        console.log(productValue);
-        console.log(quantityValue);
+        // console.log(time.substring(0, time.length - 1));
+        // console.log(productValue);
+        // console.log(quantityValue);
 
         const res1 = await sendRequest(
             `${process.env.REACT_APP_BACKEND_URL}/api/changelog/add`,
@@ -24,8 +24,8 @@ async function addLogs(productValue, quantityValue, sendRequest,op, old, cross )
                 "Content-Type": "application/json"
             }
         );
-        console.log("added these logs");
-        console.log(res1.body);
+        // console.log("added these logs");
+        // console.log(res1.body);
     } catch (error) {
         console.log(error);
     }
@@ -33,7 +33,7 @@ async function addLogs(productValue, quantityValue, sendRequest,op, old, cross )
 
 async function getLogsByProduct(product, sendRequest) {
     try {
-        console.log("getting logs By product name");
+        // console.log("getting logs By product name");
         // const event = new Date(Date.now());
         // var time = event.toLocaleString('en-GB', { timeZone: 'IST' });
 
@@ -51,8 +51,8 @@ async function getLogsByProduct(product, sendRequest) {
                 "Content-Type": "application/json"
             }
         );
-        console.log("got these logs");
-        console.log(res1.body);
+        // console.log("got these logs");
+        // console.log(res1.body);
         return res1;
     } catch (error) {
         console.log(error);
@@ -62,7 +62,7 @@ async function getLogsByProduct(product, sendRequest) {
 
 async function toggleCross(time, sendRequest) {
     try {
-        console.log("toggling crosses");
+        // console.log("toggling crosses");
         // const event = new Date(Date.now());
         // var time = event.toLocaleString('en-GB', { timeZone: 'IST' });
 
@@ -80,7 +80,7 @@ async function toggleCross(time, sendRequest) {
                 "Content-Type": "application/json"
             }
         );
-        console.log("toggled cross for these logs");
+        // console.log("toggled cross for these logs");
         // console.log(res1.body);
     } catch (error) {
         console.log(error);
