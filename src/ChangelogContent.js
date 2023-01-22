@@ -20,6 +20,8 @@ import ErrorModal from "./UIElements/ErrorModal";
 import LoadingSpinner from "./UIElements/LoadingSpinner";
 import { toggleCross } from "./addLogs";
 import LogsTable from "./LogsTable";
+import { saveAs } from "file-saver";
+import ConvertToCSV from "./ConvertToCSV";
 const style = {
 	bgcolor: "background.paper",
 	boxShadow: 1,
@@ -37,8 +39,8 @@ function createData(
 	crosschecked
 ) {
 	return { time, product, operation, oldValue, changeValue, crosschecked };
-}
 
+}
 function ChangelogContent(props) {
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 	const [logs, setLogs] = useState();
@@ -103,12 +105,17 @@ function ChangelogContent(props) {
     //     logs.sort();
         
     // }, [logs]);
-
+    
 	const handleToggleCross = async log => {
 		toggleCross(log.time, sendRequest);
 		updateLogs();
 	};
-    
+    const handleExportCSV = e => {
+		var csvrows = ConvertToCSV(JSON.stringify(logs));
+		var type = "text/csv";
+		var blob = new Blob([csvrows], { type: type });
+		saveAs(blob, "stock.csv");
+	};
     
 	return (
 			<div>
@@ -125,6 +132,7 @@ function ChangelogContent(props) {
                             <div className="center">
 
                             <Button variant="outlined" onClick={handleRefresh}>Refresh</Button>
+                            <Button variant="outlined" onClick={handleExportCSV}>Download</Button>
                             </div>
                             {LogsTable(logs, handleToggleCross)}
                             </Paper>

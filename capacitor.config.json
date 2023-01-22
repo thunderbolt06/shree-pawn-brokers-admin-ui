@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.app",
+  "appName": "Shree-Traders-Inventory",
+  "webDir": "build",
+  "bundledWebRuntime": false
+}

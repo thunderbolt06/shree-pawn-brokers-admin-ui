@@ -121,7 +121,7 @@ export default function StockPage() {
 				>
 					<Box sx={style}>
 						<Typography id="modal-modal-title" variant="h6" component="h2">
-							Change quantity
+							Add Product
 						</Typography>
 
 						<TextField

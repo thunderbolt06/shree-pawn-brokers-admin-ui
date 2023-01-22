@@ -1,7 +1,7 @@
 
 async function addLogs(productValue, quantityValue, sendRequest,op, old, cross ) {
     try {
-        // console.log("added logs");
+        console.log("added logs");
         const event = new Date(Date.now());
         var time = event.toLocaleString('en-GB', { timeZone: 'IST' });
 
@@ -24,8 +24,8 @@ async function addLogs(productValue, quantityValue, sendRequest,op, old, cross )
                 "Content-Type": "application/json"
             }
         );
-        // console.log("added these logs");
-        // console.log(res1.body);
+        console.log("added these logs");
+        console.log(res1.body);
     } catch (error) {
         console.log(error);
     }
